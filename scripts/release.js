@@ -13,6 +13,7 @@
 
 const args = require("minimist")(process.argv.slice(2));
 const execa = require("execa");
+const chalk = require('chalk');
 const { prompt } = require("enquirer");
 
 const step = (msg) => console.log(chalk.cyan(msg));
