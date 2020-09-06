@@ -1,11 +1,11 @@
 {
-  "name": "vue-component-library",
-  "version": "1.0.0",
+  "name": "vue-component-library-cxr",
+  "version": "1.0.1",
   "description": "vue 组件库",
-  "main": "dist/bundle.js",
+  "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "files": [
-    "build"
+    "dist"
   ],
   "scripts": {
     "test": "jest",
@@ -17,25 +17,26 @@
   "license": "ISC",
   "dependencies": {},
   "peerDependencies": {
-    "vue": "^3.0.0-rc.9"
+    "vue": "^v3.0.0-rc.9"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/jest": "^26.0.10",
-    "@vue/compiler-sfc": "^3.0.0-rc.9",
+    "@vue/compiler-sfc": "^v3.0.0-rc.9",
     "@vue/test-utils": "^2.0.0-beta.3",
-    "babel-preset-env": "^1.7.0",
     "babel-jest": "^26.3.0",
     "jest": "^26.4.2",
     "rollup": "^2.26.8",
+    "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-scss": "^2.6.0",
     "rollup-plugin-vue": "^6.0.0-beta.8",
     "typescript": "^4.0.2",
-    "vue": "^3.0.0-rc.9",
+    "vue": "^v3.0.0-rc.9",
     "vue-jest": "github:vuejs/vue-jest#next"
   }
 }

@@ -5,19 +5,20 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
+import babel from "rollup-plugin-babel";
 
 export default {
   input: "src/index.js",
   output: [
-    {
-      file: packageJson.main,
-      format: "cjs",
-      sourcemap: true,
-    },
+    // {
+    //   file: packageJson.main,
+    //   format: "cjs",
+    //   sourcemap: true,
+    // },
     {
       file: packageJson.module,
       format: "esm",
-      sourcemap: true,
+      sourcemap: false,
     },
   ],
   plugins: [
@@ -29,5 +30,6 @@ export default {
       css: true,
     }),
     scss(),
+    babel({ exclude: "node_modules/**" }),
   ],
 };
