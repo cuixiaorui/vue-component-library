@@ -15,8 +15,7 @@ const args = require("minimist")(process.argv.slice(2));
 const execa = require("execa");
 const { prompt } = require("enquirer");
 
-const step = msg => console.log(chalk.cyan(msg))
-
+const step = (msg) => console.log(chalk.cyan(msg));
 
 async function main() {
   const targetVersion = args.v;
@@ -38,13 +37,13 @@ async function main() {
     `build: release v${targetVersion}`,
   ]);
 
-  step('\nPublishing package...')
+  step("\nPublishing package...");
   await execa("npm", ["publish", "--registry", "https://registry.npmjs.org"]);
 
-  step('\nPushing to GitHub...')
+  step("\nPushing to GitHub...");
   await execa("git", ["push", "origin", `v${targetVersion}`]);
 
-  console.log(chalk.green(`Successfully published ${targetVersion}`)
+  console.log(chalk.green(`Successfully published ${targetVersion}`));
 }
 
 main().catch((err) => {
