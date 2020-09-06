@@ -11,37 +11,34 @@
 // 4. 执行 npm publish
 // 5. 执行 git push origin tagName(版本号)
 
-const args = require('minimist')(process.argv.slice(2))
-const execa = require('execa')
-const { prompt } = require('enquirer')
+const args = require("minimist")(process.argv.slice(2));
+const execa = require("execa");
+const { prompt } = require("enquirer");
 
 async function main() {
-  const targetVersion = args.v
+  const targetVersion = args.v;
 
   const { yes } = await prompt({
-    type: 'confirm',
-    name: 'yes',
-    message: `Releasing v${targetVersion}. Confirm?`
-  })
+    type: "confirm",
+    name: "yes",
+    message: `Releasing v${targetVersion}. Confirm?`,
+  });
 
-  if (!yes) return
+  if (!yes) return;
 
-  await execa('npm', ['run', 'build:next'])
+  // await execa("npm", ["run", "build:next"]);
 
-  await execa('npm', [
-    'version',
+  await execa("npm", [
+    "version",
     targetVersion,
-    '--message',
-    `build: release v${targetVersion}`
-  ])
+    "--message",
+    `build: release v${targetVersion}`,
+  ]);
 
-  //   需要临时修改 npm config registry
-  //   todo
-  await execa('npm', ['publish'])
-
-  await execa('git', ['push', 'origin', `v${targetVersion}`])
+  await execa("npm", ["publish", "--registry", "https://registry.npmjs.org"]);
+  await execa("git", ["push", "origin", `v${targetVersion}`]);
 }
 
 main().catch((err) => {
-  console.error(err)
-})
+  console.error(err);
+});
